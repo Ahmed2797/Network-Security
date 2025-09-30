@@ -1,0 +1,56 @@
+[2025-09-30 10:30:23,161] 40 root - INFO - Creating Directory :src\Network_Security ot the notebooks
+[2025-09-30 10:30:23,163] 44 root - INFO - Creating src\Network_Security\notebooks is empty
+[2025-09-30 10:30:23,163] 40 root - INFO - Creating Directory :src\Network_Security ot the __init__.py
+[2025-09-30 10:30:23,163] 44 root - INFO - Creating src\Network_Security\__init__.py is empty
+[2025-09-30 10:30:23,170] 40 root - INFO - Creating Directory :src\Network_Security\components ot the __init__.py
+[2025-09-30 10:30:23,172] 44 root - INFO - Creating src\Network_Security\components\__init__.py is empty
+[2025-09-30 10:30:23,172] 40 root - INFO - Creating Directory :src\Network_Security\components ot the data_ingestion.py
+[2025-09-30 10:30:23,176] 44 root - INFO - Creating src\Network_Security\components\data_ingestion.py is empty
+[2025-09-30 10:30:23,178] 40 root - INFO - Creating Directory :src\Network_Security\components ot the data_transformation.py
+[2025-09-30 10:30:23,180] 44 root - INFO - Creating src\Network_Security\components\data_transformation.py is empty
+[2025-09-30 10:30:23,180] 40 root - INFO - Creating Directory :src\Network_Security\components ot the model_trainer.py
+[2025-09-30 10:30:23,182] 44 root - INFO - Creating src\Network_Security\components\model_trainer.py is empty
+[2025-09-30 10:30:23,184] 40 root - INFO - Creating Directory :src\Network_Security ot the constants
+[2025-09-30 10:30:23,186] 44 root - INFO - Creating src\Network_Security\constants is empty
+[2025-09-30 10:30:23,186] 40 root - INFO - Creating Directory :src\Network_Security ot the entity
+[2025-09-30 10:30:23,188] 44 root - INFO - Creating src\Network_Security\entity is empty
+[2025-09-30 10:30:23,190] 40 root - INFO - Creating Directory :src\Network_Security ot the exception
+[2025-09-30 10:30:23,192] 44 root - INFO - Creating src\Network_Security\exception is empty
+[2025-09-30 10:30:23,192] 40 root - INFO - Creating Directory :src\Network_Security ot the cloud
+[2025-09-30 10:30:23,194] 44 root - INFO - Creating src\Network_Security\cloud is empty
+[2025-09-30 10:30:23,194] 40 root - INFO - Creating Directory :src\Network_Security ot the pipeline
+[2025-09-30 10:30:23,196] 44 root - INFO - Creating src\Network_Security\pipeline is empty
+[2025-09-30 10:30:23,198] 40 root - INFO - Creating Directory :src\Network_Security ot the exception.py
+[2025-09-30 10:30:23,198] 44 root - INFO - Creating src\Network_Security\exception.py is empty
+[2025-09-30 10:30:23,201] 40 root - INFO - Creating Directory :src\Network_Security ot the logger.py
+[2025-09-30 10:30:23,203] 44 root - INFO - Creating src\Network_Security\logger.py is empty
+[2025-09-30 10:30:23,204] 40 root - INFO - Creating Directory :src\Network_Security ot the utils.py
+[2025-09-30 10:30:23,204] 44 root - INFO - Creating src\Network_Security\utils.py is empty
+[2025-09-30 10:30:23,208] 44 root - INFO - Creating app.py is empty
+[2025-09-30 10:30:23,208] 44 root - INFO - Creating main.py is empty
+[2025-09-30 10:30:23,208] 44 root - INFO - Creating setup.py is empty
+[2025-09-30 10:30:23,208] 46 root - INFO - requirements.txt already exists
+[2025-09-30 10:34:21,961] 41 root - INFO - Creating Network_Data is empty
+[2025-09-30 10:34:21,962] 37 root - INFO - Creating Directory :Network_Security ot the __init__.py
+[2025-09-30 10:34:21,982] 41 root - INFO - Creating Network_Security\__init__.py is empty
+[2025-09-30 10:34:21,986] 37 root - INFO - Creating Directory :Network_Security\cloud ot the __init__.py
+[2025-09-30 10:34:21,986] 41 root - INFO - Creating Network_Security\cloud\__init__.py is empty
+[2025-09-30 10:34:21,990] 37 root - INFO - Creating Directory :Network_Security\components ot the __init__.py
+[2025-09-30 10:34:21,990] 41 root - INFO - Creating Network_Security\components\__init__.py is empty
+[2025-09-30 10:34:21,995] 37 root - INFO - Creating Directory :Network_Security\constant ot the __init__.py
+[2025-09-30 10:34:21,997] 41 root - INFO - Creating Network_Security\constant\__init__.py is empty
+[2025-09-30 10:34:21,997] 37 root - INFO - Creating Directory :Network_Security\entity ot the __init__.py
+[2025-09-30 10:34:22,001] 41 root - INFO - Creating Network_Security\entity\__init__.py is empty
+[2025-09-30 10:34:22,001] 37 root - INFO - Creating Directory :Network_Security\exception ot the __init__.py
+[2025-09-30 10:34:22,001] 41 root - INFO - Creating Network_Security\exception\__init__.py is empty
+[2025-09-30 10:34:22,001] 37 root - INFO - Creating Directory :Network_Security\logging ot the __init__.py
+[2025-09-30 10:34:22,009] 41 root - INFO - Creating Network_Security\logging\__init__.py is empty
+[2025-09-30 10:34:22,011] 37 root - INFO - Creating Directory :Network_Security\pipeline ot the __init__.py
+[2025-09-30 10:34:22,011] 41 root - INFO - Creating Network_Security\pipeline\__init__.py is empty
+[2025-09-30 10:34:22,011] 37 root - INFO - Creating Directory :Network_Security\utils ot the __init__.py
+[2025-09-30 10:34:22,017] 41 root - INFO - Creating Network_Security\utils\__init__.py is empty
+[2025-09-30 10:34:22,017] 37 root - INFO - Creating Directory :notebooks ot the app.py
+[2025-09-30 10:34:22,020] 41 root - INFO - Creating notebooks\app.py is empty
+[2025-09-30 10:34:22,023] 41 root - INFO - Creating main.py is empty
+[2025-09-30 10:34:22,023] 41 root - INFO - Creating setup.py is empty
+[2025-09-30 10:34:22,023] 43 root - INFO - requirements.txt already exists
