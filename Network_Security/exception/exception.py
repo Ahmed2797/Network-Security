@@ -1,4 +1,5 @@
 import sys 
+from networksecurity.logging import logger
 
 class NetworkSecurityException(Exception):   
 
@@ -19,6 +20,7 @@ class NetworkSecurityException(Exception):
 
 if __name__ == '__main__':
     try:
+        logger.logging.info('Try the logging&Exception')
         x = 1 / 0
     except Exception as e:
         raise NetworkSecurityException(e, sys)

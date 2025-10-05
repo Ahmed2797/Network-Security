@@ -21,7 +21,7 @@ list_of_file = [
     f"{project_name}/logging/__init__.py",
     f"{project_name}/pipeline/__init__.py",
     f"{project_name}/utils/__init__.py",
-    "notebooks/"
+    "notebooks/",
     'app.py',
     'main.py',
     'setup.py',
