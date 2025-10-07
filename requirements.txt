@@ -2,8 +2,9 @@ python-dotenv
 pandas 
 numpy 
 pymongo 
+pymongo[srv]
 certifi
 scikit-learn
-evidently
+evidently==0.2.8
 
 ##-e .
