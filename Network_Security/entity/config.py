@@ -22,3 +22,8 @@ class Data_ingestion_Config:
     train_data_path = os.path.join(data_ingestion_path,DATA_INGESTION_INGESTED_DIR,TRAIN_DATA)
     test_data_path = os.path.join(data_ingestion_path,DATA_INGESTION_INGESTED_DIR,TEST_DATA)
     split_ratio = DATA_INGESTION_SPLIT_RATIO 
+
+
+class Data_validation_config:
+    data_validation_dir = os.path.join(train_config.artifact_dir,DATA_VALIDATION_DIR)
+    data_validation_report = os.path.join(data_validation_dir,DATA_VALIDATION_REPORT_DIR,DATA_VALIDATION_REPORT_YAML)
