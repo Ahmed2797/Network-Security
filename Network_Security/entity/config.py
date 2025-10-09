@@ -23,7 +23,14 @@ class Data_ingestion_Config:
     test_data_path = os.path.join(data_ingestion_path,DATA_INGESTION_INGESTED_DIR,TEST_DATA)
     split_ratio = DATA_INGESTION_SPLIT_RATIO 
 
-
+@dataclass
 class Data_validation_config:
     data_validation_dir = os.path.join(train_config.artifact_dir,DATA_VALIDATION_DIR)
     data_validation_report = os.path.join(data_validation_dir,DATA_VALIDATION_REPORT_DIR,DATA_VALIDATION_REPORT_YAML)
+
+@dataclass 
+class Data_Transformation_Config:
+    data_transformation_dir = os.path.join(train_config.artifact_dir,DATA_TRANSFORMATION_DIR)
+    data_transformation_train_file = os.path.join(data_transformation_dir,DATA_TRANSFORMATION_TRANSFORM_FILE,TRAIN_DATA.replace('csv','npy'))
+    data_transformation_test_file = os.path.join(data_transformation_dir,DATA_TRANSFORMATION_TRANSFORM_FILE,TEST_DATA.replace('csv','npy'))
+    data_transformation_object_pkl = os.path.join(data_transformation_dir,DATA_TRANSFORMATION_TRANSFORM_0BJECT_FILE,PREPROCESSING_FILE)

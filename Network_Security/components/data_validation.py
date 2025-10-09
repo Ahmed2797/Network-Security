@@ -1,5 +1,5 @@
 from Network_Security.logging.logger import logging
-from Network_Security.constant import SEHEMA_FILE_PATH
+from Network_Security.constant import SCHEMA_FILE_PATH
 from Network_Security.utils import read_yaml_file, write_yaml_file
 from Network_Security.entity.artifact import Data_Ingestion_Artifact, Data_validation_Artifact
 from Network_Security.entity.config import Data_validation_config
@@ -17,9 +17,9 @@ class Data_validation:
         try:
             self.data_ingestion_artifact = data_ingestion_artifact
             self.data_validation_config = data_validation_config
-            self._schema_yaml = read_yaml_file(file_path=SEHEMA_FILE_PATH)
+            self._schema_yaml = read_yaml_file(file_path=SCHEMA_FILE_PATH)
             if self._schema_yaml is None:
-                raise ValueError(f"Schema file not loaded or is empty: {SEHEMA_FILE_PATH}")
+                raise ValueError(f"Schema file not loaded or is empty: {SCHEMA_FILE_PATH}")
         except Exception as e:
             raise NetworkSecurityException(e,sys)
         

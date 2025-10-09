@@ -18,6 +18,11 @@ if __name__ == '__main__':
         data_validation_artifact = pipeline.start_data_validation(data_ingestion_artifact)
         logging.info(f'>>> Data Validation Completed: {data_validation_artifact}')
 
+        # Data Transformation
+        logging.info('>>> Starting Data Transformation')
+        data_transformation_artifact = pipeline.start_data_transformation(data_ingestion_artifact,data_validation_artifact)
+        logging.info(f'>>> Data Transformation Completed: {data_transformation_artifact}')
+
         logging.info('Pipeline finished successfully')
         
     except Exception as e:

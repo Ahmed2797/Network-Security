@@ -1,4 +1,6 @@
 import os
+import numpy as np 
+from datetime import date
 
 # MongoDB
 DATA_BASE_NAME = 'NETWORK_SECURITY'
@@ -27,5 +29,20 @@ DATA_VALIDATION_DIR:str = 'data_validation'
 DATA_VALIDATION_REPORT_DIR:str = 'drift_report'
 DATA_VALIDATION_REPORT_YAML:str = 'report.yaml'
 
+# Data_transformation
+DATA_TRANSFORMATION_DIR:str = 'data_tranasformation'
+DATA_TRANSFORMATION_TRANSFORM_FILE:str = 'transform'
+DATA_TRANSFORMATION_TRANSFORM_0BJECT_FILE:str = 'transform_obj'
+PREPROCESSING_FILE:str = 'preprocessing.pkl'
+TARGET_COLUMN = 'result'
+CURRENT_YEAR = date.today().year
 
-SEHEMA_FILE_PATH = os.path.join('data_schema','column.yaml')
+DATA_TRANSFORMATION_IMPUTER_PARAMS: dict={ 
+    'missing_values': np.nan,
+    'n_neighbors':3,
+    'weights':'uniform'
+}
+
+
+SCHEMA_FILE_PATH = os.path.join('data_schema','column.yaml')
+
