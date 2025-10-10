@@ -36,13 +36,20 @@ DATA_TRANSFORMATION_TRANSFORM_0BJECT_FILE:str = 'transform_obj'
 PREPROCESSING_FILE:str = 'preprocessing.pkl'
 TARGET_COLUMN = 'result'
 CURRENT_YEAR = date.today().year
-
+# KNNImputer
 DATA_TRANSFORMATION_IMPUTER_PARAMS: dict={ 
     'missing_values': np.nan,
     'n_neighbors':3,
     'weights':'uniform'
 }
-
-
 SCHEMA_FILE_PATH = os.path.join('data_schema','column.yaml')
+
+# model_trainer
+MODEL_TRAINER_DIR:str = 'model_trainer'
+MODEL_TRAINER_FILE_NAME:str = 'trained_model'
+MODEL_TRAINER_TRAINED_MODEL_NAME:str = 'model.pkl'
+MODEL_TRAINER_CONFIG_PARAM_PATH:str = os.path.join('data_schema','best_param.yaml')
+MODEL_TRAINER_EXCEPTED_RATIO:float = 0.6
+
+
 

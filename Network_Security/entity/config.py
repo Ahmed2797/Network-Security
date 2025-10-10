@@ -1,6 +1,7 @@
 from dataclasses import dataclass 
 from datetime import datetime
 from Network_Security.constant import *
+from Network_Security.entity.artifact import Metrics_Artifact
 
 
 TIMESTAMP = datetime.now().strftime('%m_%d_%Y_%H_%M_%S')
@@ -34,3 +35,13 @@ class Data_Transformation_Config:
     data_transformation_train_file = os.path.join(data_transformation_dir,DATA_TRANSFORMATION_TRANSFORM_FILE,TRAIN_DATA.replace('csv','npy'))
     data_transformation_test_file = os.path.join(data_transformation_dir,DATA_TRANSFORMATION_TRANSFORM_FILE,TEST_DATA.replace('csv','npy'))
     data_transformation_object_pkl = os.path.join(data_transformation_dir,DATA_TRANSFORMATION_TRANSFORM_0BJECT_FILE,PREPROCESSING_FILE)
+
+@dataclass 
+class Model_Trainer_Config:
+    model_trainer_dir = os.path.join(train_config.artifact_dir, MODEL_TRAINER_DIR)
+    model_trained_path = os.path.join(model_trainer_dir, MODEL_TRAINER_FILE_NAME, MODEL_TRAINER_TRAINED_MODEL_NAME)
+    model_trained_config_param_path = MODEL_TRAINER_CONFIG_PARAM_PATH
+    excepted_ratio = MODEL_TRAINER_EXCEPTED_RATIO
+    
+
+

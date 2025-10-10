@@ -14,7 +14,7 @@ if __name__ == '__main__':
         logging.info(f'>>> Data Ingestion Completed: {data_ingestion_artifact}')
 
         # Data Validation
-        logging.info('>>> Starting Data Validation')
+        logging.info('---------->>> Starting Data Validation-------------->>>')
         data_validation_artifact = pipeline.start_data_validation(data_ingestion_artifact)
         logging.info(f'>>> Data Validation Completed: {data_validation_artifact}')
 
@@ -22,6 +22,12 @@ if __name__ == '__main__':
         logging.info('>>> Starting Data Transformation')
         data_transformation_artifact = pipeline.start_data_transformation(data_ingestion_artifact,data_validation_artifact)
         logging.info(f'>>> Data Transformation Completed: {data_transformation_artifact}')
+
+        #Model Trainer
+        logging.info('---------->>> Starting Model Trainer -------------->>>')
+        model_trainer_artifact = pipeline.strat_model_trainer(data_transformation_artifact)
+        logging.info(f'>>> Model Trainer Completed: {model_trainer_artifact}')
+
 
         logging.info('Pipeline finished successfully')
         

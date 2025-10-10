@@ -16,3 +16,15 @@ class Data_Transformation_Artifact:
     transform_object:str
     transform_train_file:str 
     transform_test_file:str 
+
+@dataclass 
+class Metrics_Artifact:
+    f1_score:float 
+    accuracy_score:float
+    recall_score:float 
+    precision_score:float
+
+@dataclass 
+class Model_Trainer_Artifact:
+    model_pkl:str 
+    metrics : Metrics_Artifact 
