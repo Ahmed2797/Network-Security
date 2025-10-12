@@ -14,7 +14,8 @@ import numpy as np
 import pandas as pd
 import mlflow
 import sys
-
+import dagshub
+dagshub.init(repo_owner='Ahmed2797', repo_name='Network-Security', mlflow=True)
 
 
 class Network_model:
@@ -43,17 +44,23 @@ class Model_Train:
         self.model_trainer_config = model_trainer_config 
     
     def track_mlflow(self,best_model,metrics_artifact):
-        with mlflow.start_run():
-            f1 = metrics_artifact.f1_score
-            precision = metrics_artifact.precision_score
-            accuracy = metrics_artifact.accuracy_score
-            recall = metrics_artifact.recall_score
+        try:
+            with mlflow.start_run():
+                f1 = metrics_artifact.f1_score
+                precision = metrics_artifact.precision_score
+                accuracy = metrics_artifact.accuracy_score
+                recall = metrics_artifact.recall_score
 
-            mlflow.log_metric('f1_score', f1)
-            mlflow.log_metric('precision_score', precision)
-            mlflow.log_metric('accuracy_score', accuracy)
-            mlflow.log_metric('recall_score', recall)
-            mlflow.sklearn.log_model(best_model,'model')
+                mlflow.log_metric('f1_score', f1)
+                mlflow.log_metric('precision_score', precision)
+                mlflow.log_metric('accuracy_score', accuracy)
+                mlflow.log_metric('recall_score', recall)
+                try:
+                    mlflow.sklearn.log_model(best_model,'model')
+                except Exception as e:
+                    logging.info(f"[WARNING] Failed to log model to MLflow/DagsHub: {e}")
+        except Exception as e:
+            raise NetworkSecurityException(e,sys)
     
     def get_best_model_indentify(self, train_arr: np.array, test_arr: np.array):
         try:

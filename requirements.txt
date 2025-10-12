@@ -6,5 +6,8 @@ pymongo[srv]
 certifi
 scikit-learn
 evidently==0.2.8
+mlflow 
+dagshub
+pyaml
 
 ##-e .
