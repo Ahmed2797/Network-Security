@@ -1,5 +1,5 @@
 from Network_Security.entity.artifact import (Data_Transformation_Artifact,
-                                              Metrics_Artifact,
+                                             Metrics_Artifact,
                                               Model_Trainer_Artifact)
 from Network_Security.entity.config import Model_Trainer_Config
 from Network_Security.utils import load_numpy_array,load_object,save_object
@@ -12,14 +12,16 @@ from neuro_mf import ModelFactory
 from typing import Tuple
 import numpy as np 
 import pandas as pd
+import mlflow
 import sys
 
 
 
 class Network_model:
-    def __init__(self, transform_object: Pipeline, best_model_details: object)->Tuple[object,object]:
+    def __init__(self, transform_object: Pipeline, best_model_details: object):
         self.transform_object = transform_object
         self.best_model_details = best_model_details
+
     def predict(self, dataframe: pd.DataFrame) -> pd.DataFrame:
         try:
             transformed_features = self.transform_object.transform(dataframe)
@@ -28,12 +30,30 @@ class Network_model:
             return pd.DataFrame(predictions, columns=['prediction'])
         except Exception as e:
             raise NetworkSecurityException(e,sys)
+    def __repr__(self):
+        return f"{type(self.best_model_details).__name__}()"
+
+    def __str__(self):
+        return f"{type(self.best_model_details).__name__}()"
 
 class Model_Train:
     def __init__(self, data_transformation_artifact: Data_Transformation_Artifact,
                  model_trainer_config: Model_Trainer_Config):
         self.data_transformation_artifact = data_transformation_artifact
-        self.model_trainer_config = model_trainer_config
+        self.model_trainer_config = model_trainer_config 
+    
+    def track_mlflow(self,best_model,metrics_artifact):
+        with mlflow.start_run():
+            f1 = metrics_artifact.f1_score
+            precision = metrics_artifact.precision_score
+            accuracy = metrics_artifact.accuracy_score
+            recall = metrics_artifact.recall_score
+
+            mlflow.log_metric('f1_score', f1)
+            mlflow.log_metric('precision_score', precision)
+            mlflow.log_metric('accuracy_score', accuracy)
+            mlflow.log_metric('recall_score', recall)
+            mlflow.sklearn.log_model(best_model,'model')
     
     def get_best_model_indentify(self, train_arr: np.array, test_arr: np.array):
         try:
@@ -59,6 +79,8 @@ class Model_Train:
                                                 accuracy_score=acc,
                                                 recall_score=recall,
                                                 precision_score=precision)
+            # track_mlflow
+            self.track_mlflow(best_model,metrics_artifact)
             
             print(metrics_artifact)
             print(best_model_details.best_score)
