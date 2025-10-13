@@ -49,7 +49,17 @@ MODEL_TRAINER_DIR:str = 'model_trainer'
 MODEL_TRAINER_FILE_NAME:str = 'trained_model'
 MODEL_TRAINER_TRAINED_MODEL_NAME:str = 'model.pkl'
 MODEL_TRAINER_CONFIG_PARAM_PATH:str = os.path.join('data_schema','best_param.yaml')
-MODEL_TRAINER_EXCEPTED_RATIO:float = 0.6
+MODEL_TRAINER_EXCEPTED_RATIO:float = 0.6 
+
+#AWS Configeration
+REGION = 'us-east-1'
+AWS_ACCESS_KEY = 'AWS_ACCESS_KEY_ID'
+AWS_SECRET_KEY = 'AWS_SECRET_ACCESS_KEY' 
+
+# model_evalution 
+MODEL_BUCKET_NAME:str = 'network_security'
+MODEL_EVALUTION_CHANGED_THRESHOLD:float = 0.8 
+MODEL_TRAINER_TRAINED_MODEL_NAME:str = 'model.pkl'
 
 
 

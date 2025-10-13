@@ -28,3 +28,10 @@ class Metrics_Artifact:
 class Model_Trainer_Artifact:
     model_pkl:str 
     metrics : Metrics_Artifact 
+
+@dataclass 
+class Model_Evalution_Artifact:
+    is_model_accepted:bool 
+    changed_accuracy:float
+    train_model_path:str 
+    s3_model_path:str

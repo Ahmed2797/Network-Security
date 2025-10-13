@@ -9,5 +9,6 @@ evidently==0.2.8
 mlflow 
 dagshub
 pyaml
+boto3
 
 ##-e .

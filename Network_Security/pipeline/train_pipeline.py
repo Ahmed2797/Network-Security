@@ -2,13 +2,19 @@ from Network_Security.components.data_ingestion import Data_Ingestion
 from Network_Security.components.data_validation import Data_validation
 from Network_Security.components.data_transformation import DataTransformation
 from Network_Security.components.model_train import Model_Train
+from Network_Security.components.model_evalution import ModelEvalution
+
 from Network_Security.entity.config import (Data_ingestion_Config,
                                             Data_validation_config,
                                             Data_Transformation_Config,
-                                            Model_Trainer_Config) 
+                                            Model_Trainer_Config,
+                                            Model_Evalution_Config) 
+
 from Network_Security.entity.artifact import (Data_Ingestion_Artifact,
                                               Data_validation_Artifact,
-                                              Data_Transformation_Artifact)
+                                              Data_Transformation_Artifact,
+                                              Model_Trainer_Artifact,
+                                              Model_Evalution_Artifact)
 
 from Network_Security.exception.exception import NetworkSecurityException
 import sys
@@ -20,6 +26,7 @@ class Training_Pipeline:
         self.data_validation_config = Data_validation_config()
         self.data_transformation_config = Data_Transformation_Config()
         self.model_trainer_config = Model_Trainer_Config()
+        self.model_evalution_config  = Model_Evalution_Config
 
 
     def start_data_ingestion(self)->Data_Ingestion_Artifact:
@@ -51,12 +58,23 @@ class Training_Pipeline:
         except Exception as e:
             raise NetworkSecurityException(e,sys)
         
-    def strat_model_trainer(self,data_transformation_artifact:Data_Transformation_Artifact):
+    def strat_model_trainer(self,data_transformation_artifact:Data_Transformation_Artifact)->Model_Trainer_Artifact:
         try:
             model_train = Model_Train(data_transformation_artifact=data_transformation_artifact,
                                     model_trainer_config=self.model_trainer_config)
             model_trainer_artifact=model_train.init_best_model()
             return model_trainer_artifact
+        except Exception as e:
+            raise NetworkSecurityException(e,sys)
+        
+    def start_model_evalution(self,data_ingestion_artifact:Data_Ingestion_Artifact,
+                              model_trainer_artifact:Model_Trainer_Artifact)->Model_Evalution_Artifact:
+        try:
+            model_evaluate = ModelEvalution(data_ingestion_artifact = data_ingestion_artifact, 
+                                            model_trainer_artifact = model_trainer_artifact, 
+                                            model_evalution_config = self.model_evalution_config)
+            model_evalution_artifact = model_evaluate.init_model_evaluation()
+            return model_evalution_artifact
         except Exception as e:
             raise NetworkSecurityException(e,sys)
 
@@ -66,6 +84,8 @@ class Training_Pipeline:
             data_validation_artifact=self.start_data_validation(data_ingestion_artifact)
             data_transformation_artifact = self.start_data_transformation(data_ingestion_artifact,data_validation_artifact)
             model_trainer_artifact = self.strat_model_trainer(data_transformation_artifact)
+            # model_evalution_artifact = self.start_model_evalution(model_trainer_artifact)
+            # return model_evalution_artifact
         except Exception as e:
             raise NetworkSecurityException(e,sys)
 

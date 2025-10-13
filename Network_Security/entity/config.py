@@ -42,6 +42,11 @@ class Model_Trainer_Config:
     model_trained_path = os.path.join(model_trainer_dir, MODEL_TRAINER_FILE_NAME, MODEL_TRAINER_TRAINED_MODEL_NAME)
     model_trained_config_param_path = MODEL_TRAINER_CONFIG_PARAM_PATH
     excepted_ratio = MODEL_TRAINER_EXCEPTED_RATIO
-    
+
+@dataclass 
+class Model_Evalution_Config:
+    bucket_name:str = MODEL_BUCKET_NAME 
+    s3_model_path:str = MODEL_TRAINER_TRAINED_MODEL_NAME
+    changed_model_score:float =  MODEL_EVALUTION_CHANGED_THRESHOLD
 
 

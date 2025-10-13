@@ -28,7 +28,8 @@ class Network_model:
             transformed_features = self.transform_object.transform(dataframe)
             predictions = self.best_model_details.predict(transformed_features)
 
-            return pd.DataFrame(predictions, columns=['prediction'])
+            # return pd.DataFrame(predictions, columns=['prediction'])
+            return predictions
         except Exception as e:
             raise NetworkSecurityException(e,sys)
     def __repr__(self):
