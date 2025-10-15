@@ -1,5 +1,6 @@
 import sys 
 from sklearn.pipeline import Pipeline 
+from Network_Security.constant import TARGET_COLUMN
 from Network_Security.exception.exception import NetworkSecurityException 
 
 import pandas as pd 
@@ -11,8 +12,11 @@ class Network_model:
 
     def predict(self, dataframe: pd.DataFrame) -> pd.DataFrame:
         try:
+            # x = dataframe.drop(columns=[TARGET_COLUMN], axis=1)
+            # y = dataframe[TARGET_COLUMN].replace(-1, 0)
             transformed_features = self.transform_object.transform(dataframe)
-            predictions = self.best_model_details.predict(transformed_features)
+            model = getattr(self.best_model_details, "best_model", self.best_model_details)
+            predictions = model.predict(transformed_features)
             return predictions
             #return pd.DataFrame(predictions, columns=['prediction'])
         except Exception as e:

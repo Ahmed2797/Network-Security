@@ -30,10 +30,10 @@ if __name__ == '__main__':
         model_trainer_artifact = pipeline.strat_model_trainer(data_transformation_artifact)
         logging.info(f'>>> Model Trainer Completed: {model_trainer_artifact}')
 
-        #Model Evalution
-        logging.info('---------->>> Starting Model evalution -------------->>>')
-        model_evalution_artifact = pipeline.start_model_evalution(data_ingestion_artifact,model_trainer_artifact)
-        logging.info(f'>>> Model Evalution Completed: {model_evalution_artifact}')
+        # #Model Evalution
+        # logging.info('---------->>> Starting Model evalution -------------->>>')
+        # model_evalution_artifact = pipeline.start_model_evalution(data_ingestion_artifact,model_trainer_artifact)
+        # logging.info(f'>>> Model Evalution Completed: {model_evalution_artifact}')
 
 
         logging.info('Pipeline finished successfully')

@@ -105,13 +105,15 @@ class Model_Train:
 
             best_model_details, metrics_artifact = self.get_best_model_indentify(train_arr, test_arr)
             transform_object = load_object(self.data_transformation_artifact.transform_object)
-            print(best_model_details)
-            print(metrics_artifact)
+            #print(best_model_details)
+            save_object('final_model/model.pkl', best_model_details)
+            #print(metrics_artifact)
             if best_model_details.best_score < self.model_trainer_config.excepted_ratio:
                 logging.info("Best model not found with expected accuracy.")
 
             network_model_obj = Network_model(transform_object, best_model_details)
             save_object(self.model_trainer_config.model_trained_path, network_model_obj)
+
 
             model_trainer_artifact = Model_Trainer_Artifact(
                 model_pkl=self.model_trainer_config.model_trained_path,

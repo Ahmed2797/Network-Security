@@ -5,10 +5,13 @@ pymongo
 pymongo[srv]
 certifi
 scikit-learn
-evidently==0.2.8
+evidently
 mlflow 
 dagshub
 pyaml
-boto3
+boto3 
+fastapi 
+uvicorn
+neuro_mf
 
 ##-e .

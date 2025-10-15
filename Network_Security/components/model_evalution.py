@@ -35,7 +35,7 @@ class ModelEvalution:
         test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
         x = test_df.drop([TARGET_COLUMN],axis=1)
         y = test_df[TARGET_COLUMN]
-        y = y.repalce(-1,0) 
+        y = y.replace(-1,0) 
         best_model = self.get_best_model()
         best_model_score = None
          

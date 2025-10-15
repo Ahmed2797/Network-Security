@@ -11,6 +11,7 @@ class NS_Train_Configeration:
     artifact_dir:str = os.path.join(ARTIFACTS,TIMESTAMP)
     pipeline_dir:str = PIPELINE_DIR
     TIMESTAMP:str = TIMESTAMP
+    model_dir:str = os.path.join('final_model')
 
 train_config = NS_Train_Configeration()
 

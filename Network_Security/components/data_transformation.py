@@ -68,6 +68,7 @@ class DataTransformation:
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test)]
 
             # Save transformation pipeline and arrays
+            save_object('final_model/preprocessor.pkl',preprocessor) # use FastAPI
             save_object(self.data_transformation_config.data_transformation_object_pkl, obj=preprocessor)
             save_numpy_array(self.data_transformation_config.data_transformation_train_file, array=train_arr)
             save_numpy_array(self.data_transformation_config.data_transformation_test_file, array=test_arr)
