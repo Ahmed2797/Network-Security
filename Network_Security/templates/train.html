@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Train Phishing Model</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f7f9fc; text-align: center; padding-top: 50px; }
+    .container { background: white; padding: 30px 40px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: inline-block; min-width: 320px; }
+    input[type="text"] { padding: 10px; width: 260px; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 12px; }
+    button { padding: 10px 20px; background-color: #0078D7; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    button[disabled] { opacity: 0.6; cursor: not-allowed; }
+    .message { margin-top: 16px; font-weight: bold; min-height: 22px; }
+    .success { color: #2d9d78; }
+    .error { color: #d9534f; }
+    .spinner { display:inline-block; width:16px; height:16px; border:2px solid rgba(0,0,0,0.2); border-top-color: rgba(0,0,0,0.6); border-radius:50%; animation: spin .8s linear infinite; vertical-align:middle; margin-left:8px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Start Training Phishing Model</h2>
+
+    <label for="apiKey">Enter API Key:</label><br>
+    <input type="text" id="apiKey" placeholder="Enter API Key" required /><br>
+
+    <button id="startBtn" onclick="startTraining()">Start Training</button>
+
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    async function startTraining() {
+      const apiKey = document.getElementById("apiKey").value.trim();
+      const messageDiv = document.getElementById("message");
+      const btn = document.getElementById("startBtn");
+
+      messageDiv.className = "message";
+      messageDiv.textContent = "";
+
+      if (!apiKey) {
+        messageDiv.classList.add("error");
+        messageDiv.textContent = "Please enter API key!";
+        return;
+      }
+
+      btn.disabled = true;
+      // show inline spinner while waiting
+      const spinner = document.createElement('span');
+      spinner.className = 'spinner';
+      btn.appendChild(spinner);
+
+      try {
+        const response = await fetch("/train", {
+          method: "GET",
+          headers: {
+            "x-api-key": apiKey,
+            "Accept": "application/json, text/html, text/plain"
+          }
+        });
+
+        // determine content type
+        const contentType = response.headers.get("content-type") || "";
+
+        // If server returns JSON, parse it; otherwise read as text
+        let body;
+        if (contentType.includes("application/json")) {
+          body = await response.json();
+        } else {
+          body = await response.text();
+        }
+
+        // Check HTTP status:
+        if (response.ok || response.status === 202) {
+          // success
+          messageDiv.classList.add("success");
+          // if JSON, try to extract message; else show text
+          if (typeof body === "object" && body !== null) {
+            messageDiv.textContent = body.message || body.detail || "Training started in background!";
+          } else {
+            // server might return an HTML page: search for a message substring or show generic text
+            // Try to extract a visible message if the HTML contains it (basic)
+            const maybeMatch = body.match(/(Training (?:started|failed)[^<\n\r]+)/i);
+            messageDiv.textContent = maybeMatch ? maybeMatch[0] : "Training started in background!";
+          }
+        } else {
+          // not ok: show error details if available
+          messageDiv.classList.add("error");
+          if (typeof body === "object" && body !== null) {
+            messageDiv.textContent = body.detail || body.message || JSON.stringify(body);
+          } else {
+            // show server html/text (short)
+            messageDiv.textContent = body ? (body.substring(0, 400) + (body.length > 400 ? "..." : "")) : `Error ${response.status}`;
+          }
+        }
+      } catch (err) {
+        messageDiv.classList.add("error");
+        messageDiv.textContent = "Network or server error: " + (err.message || err);
+      } finally {
+        btn.disabled = false;
+        // remove spinner if still present
+        const s = btn.querySelector('.spinner');
+        if (s) s.remove();
+      }
+    }
+  </script>
+</body>
+</html>

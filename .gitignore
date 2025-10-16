@@ -2,3 +2,4 @@ NS
 .env
 logs 
 __pycache__ 
+fastapp.py

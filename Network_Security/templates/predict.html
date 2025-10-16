@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing URL Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            display: inline-block;
+            background: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 6px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0078D7;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Phishing URL Detection Form</h2>
+
+    <form method="post" action="/predict">
+    <label>Having IP Address:</label>
+    <input type="number" name="having_ip_address" required>
+
+    <label>URL Length:</label>
+    <input type="number" name="url_length" required>
+
+    <label>Shortening Service:</label>
+    <input type="number" name="shortining_service" required>
+
+    <label>Having @ Symbol:</label>
+    <input type="number" name="having_at_symbol" required>
+
+    <label>Double Slash Redirecting:</label>
+    <input type="number" name="double_slash_redirecting" required>
+
+    <label>Prefix Suffix:</label>
+    <input type="number" name="prefix_suffix" required>
+
+    <label>Having Sub Domain:</label>
+    <input type="number" name="having_sub_domain" required>
+
+    <label>SSL Final State:</label>
+    <input type="number" name="sslfinal_state" required>
+
+    <label>Domain Registration Length:</label>
+    <input type="number" name="domain_registration_length" required>
+
+    <label>Favicon:</label>
+    <input type="number" name="favicon" required>
+
+    <label>Port:</label>
+    <input type="number" name="port" required>
+
+    <label>HTTPS Token:</label>
+    <input type="number" name="https_token" required>
+
+    <label>Request URL:</label>
+    <input type="number" name="request_url" required>
+
+    <label>URL of Anchor:</label>
+    <input type="number" name="url_of_anchor" required>
+
+    <label>Links in Tags:</label>
+    <input type="number" name="links_in_tags" required>
+
+    <label>SFH:</label>
+    <input type="number" name="sfh" required>
+
+    <label>Submitting to Email:</label>
+    <input type="number" name="submitting_to_email" required>
+
+    <label>Abnormal URL:</label>
+    <input type="number" name="abnormal_url" required>
+
+    <label>Redirect:</label>
+    <input type="number" name="redirect" required>
+
+    <label>On Mouseover:</label>
+    <input type="number" name="on_mouseover" required>
+
+    <label>Right Click:</label>
+    <input type="number" name="rightclick" required>
+
+    <label>Popup Window:</label>
+    <input type="number" name="popupwindow" required>
+
+    <label>Iframe:</label>
+    <input type="number" name="iframe" required>
+
+    <label>Age of Domain:</label>
+    <input type="number" name="age_of_domain" required>
+
+    <label>DNS Record:</label>
+    <input type="number" name="dnsrecord" required>
+
+    <label>Web Traffic:</label>
+    <input type="number" name="web_traffic" required>
+
+    <label>Page Rank:</label>
+    <input type="number" name="page_rank" required>
+
+    <label>Google Index:</label>
+    <input type="number" name="google_index" required>
+
+    <label>Links Pointing to Page:</label>
+    <input type="number" name="links_pointing_to_page" required>
+
+    <label>Statistical Report:</label>
+    <input type="number" name="statistical_report" required>
+
+    <button type="submit">Predict</button>
+</form>
+
+
+    {% if result %}
+        <h3>Prediction Result: {{ result }}</h3>
+    {% endif %}
+</body>
+</html>
